@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Problem01_RockPaperScissors {
 
@@ -12,45 +12,40 @@ public class Problem01_RockPaperScissors {
         int losses = 0;
         int draws = 0;
 
-        String[] moves = {"Rock", "Paper", "Scissors"};
+        String[] choices = {"Rock", "Paper", "Scissors"};
 
         for (int round = 1; round <= 5; round++) {
 
-            System.out.println("Round " + round);
-            System.out.print("Enter Rock, Paper or Scissors: ");
-            String player = sc.next();
+            System.out.print("Enter Rock/Paper/Scissors: ");
+            String player = sc.nextLine();
 
-            int index = random.nextInt(3);
-            String computer = moves[index];
+            int computerIndex = random.nextInt(3);
+            String computer = choices[computerIndex];
 
-            System.out.println("Computer chose: " + computer);
+            System.out.print("Computer: " + computer + " | ");
 
             if (player.equalsIgnoreCase(computer)) {
                 System.out.println("Draw");
                 draws++;
             }
-            else if (
-                    (player.equalsIgnoreCase("Rock") && computer.equals("Scissors")) ||
-                            (player.equalsIgnoreCase("Paper") && computer.equals("Rock")) ||
-                            (player.equalsIgnoreCase("Scissors") && computer.equals("Paper"))
-            ) {
-                System.out.println("You Win");
+            else if ((player.equalsIgnoreCase("Rock") && computer.equals("Scissors")) ||
+                    (player.equalsIgnoreCase("Paper") && computer.equals("Rock")) ||
+                    (player.equalsIgnoreCase("Scissors") && computer.equals("Paper"))) {
+                System.out.println("Player Wins");
                 wins++;
             }
             else {
-                System.out.println("You Lose");
+                System.out.println("Computer Wins");
                 losses++;
             }
-
-            System.out.println();
         }
 
-        double winPercentage = (wins / 5.0) * 100;
+        double winPercentage = (wins * 100.0) / 5;
 
         System.out.println("Wins: " + wins);
         System.out.println("Losses: " + losses);
         System.out.println("Draws: " + draws);
-        System.out.println("Win Percentage: " + winPercentage + "%");
+        System.out.println("Win %: " + winPercentage);
 
         sc.close();
     }
